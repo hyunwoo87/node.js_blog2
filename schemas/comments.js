@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 // 'Comments'에 대한 스키마 정의
 const commentsSchema = new mongoose.Schema({
@@ -29,4 +29,4 @@ const commentsSchema = new mongoose.Schema({
 });
 
 // 'Comments' 모델을 생성하고 commentsSchema를 이용하여 스키마를 설정
-module.exports = mongoose.model("Comments", commentsSchema);
+module.exports = mongoose.model('Comments', commentsSchema);

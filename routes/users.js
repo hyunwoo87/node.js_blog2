@@ -1,10 +1,10 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
-const userSchema = require("../schemas/user");
-const authMiddleware = require("../middlewares/auth-middleware");
+const userSchema = require('../schemas/user');
+const authMiddleware = require('../middlewares/auth-middleware');
 
 // 내 정보 조회 API
-router.get("/users/me", authMiddleware, async (req, res) => {
+router.get('/users/me', authMiddleware, async (req, res) => {
   console.log(res.locals.user);
   const { email, nickname } = res.locals.user;
 
@@ -17,12 +17,12 @@ router.get("/users/me", authMiddleware, async (req, res) => {
 });
 
 // 회원가입 API
-router.post("/users", async (req, res) => {
+router.post('/users', async (req, res) => {
   const { email, nickname, password, confirmPassword } = req.body;
   // 패스워드와 패스워드 일치 확인
   if (password !== confirmPassword) {
     res.status(400).json({
-      errorMessage: "패스워드와 전달된 패스워드 확인값이 일치하지 않습니다",
+      errorMessage: '패스워드와 전달된 패스워드 확인값이 일치하지 않습니다',
     });
     return;
   }
@@ -33,7 +33,7 @@ router.post("/users", async (req, res) => {
   });
   if (isExistUser) {
     res.status(400).json({
-      errorMessage: "이메일 또는 닉네임이 이미 사용중입니다",
+      errorMessage: '이메일 또는 닉네임이 이미 사용중입니다',
     });
     return;
   }

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   email: {
@@ -17,12 +17,12 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-UserSchema.virtual("userId").get(function () {
+UserSchema.virtual('userId').get(function () {
   return this._id.toHexString();
 });
 
-UserSchema.set("toJSON", {
+UserSchema.set('toJSON', {
   virtuals: true,
 });
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = mongoose.model('User', UserSchema);
